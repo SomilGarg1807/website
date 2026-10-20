@@ -1,6 +1,6 @@
 ---
 title: "BxPlaywright 1.0: Real Browsers, Fluent BoxLang, Built for AI Agents"
-date: "2026-01-01"
+date: "2026-10-21"
 description: "BxPlaywright 1.0 brings fluent browser automation, real-browser testing, Playwright MCP, accessibility checks, rendering, and AI-agent tooling to BoxLang."
 authors:
   - "luis-majano"
@@ -12,7 +12,11 @@ categories:
   - "AI"
   - "Developer Tools"
 canonical: "https://www.ortussolutions.com/blog/bxplaywright-10-real-browsers-fluent-boxlang-built-for-ai-agents"
-related_posts: []
+related_posts:
+  - "boxlang-ai-340-gateways-hitl-security"
+  - "introducing-cbgenesis-ai-native-coldbox-starter-for-boxlang"
+  - "boxlang-ai-v3-has-landed-multi-agent-orchestration-tooling-skills-and-so-much-more"
+  - "my-first-steps-with-playwright"
 ---
 
 **Ortus Solutions today announces the general availability of [bx-playwright 1.0](https://bxplaywright.boxlang.io), fluent browser automation and testing for BoxLang, powered by Microsoft Playwright. It ships alongside [TestBox 7.2](https://testbox.ortusbooks.com/readme/release-history/whats-new-with-7.2.0) and [ColdBox 8.3](https://coldbox.ortusbooks.com/release-history/whats-new-with-8.3.0), which bring real-browser testing straight into your specs. Drive Chromium, Firefox and WebKit, test full user journeys, render PDFs and images, and give your AI agents a real browser to verify the BoxLang applications they build.**
@@ -230,6 +234,7 @@ Two distributions:
 
 - **`bx-playwright`** (~4 MB): uses Node.js 20+ on your machine, or downloads and verifies one for you
 - **`bx-playwright-full`**: Node.js bundled for every platform. Useful for offline and restricted environments when browser artifacts are pre-provisioned in advance.
+
 ```bash
 # Install the module
 install-bx-module bx-playwright
