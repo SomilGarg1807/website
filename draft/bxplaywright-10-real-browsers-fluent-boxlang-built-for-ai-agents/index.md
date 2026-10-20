@@ -229,8 +229,7 @@ On BoxLang? bx-playwright is the way forward.
 Two distributions:
 
 - **`bx-playwright`** (~4 MB): uses Node.js 20+ on your machine, or downloads and verifies one for you
-- **`bx-playwright-full`**: Node.js bundled for every platform, so only browsers download. Ideal for air-gapped servers
-
+- **`bx-playwright-full`**: Node.js bundled for every platform. Useful for offline and restricted environments when browser artifacts are pre-provisioned in advance.
 ```bash
 # Install the module
 install-bx-module bx-playwright
