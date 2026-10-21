@@ -11,6 +11,11 @@ categories:
   - "Raspberry Pi"
   - "Java"
   - "Embedded"
+related_posts:
+  - "pi4j-drivers-simplifying-sensor-and-hardware-integration-in-java"
+  - "using-the-raspberry-pi-sense-hat-with-pi4j-drivers"
+  - "pi4j-v5-work-in-progress"
+  - "the-ffm-api-how-openjdk-changed-the-game-for-native-interactions-and-made-pi4j-better"
 ---
 
 [Pi4J](https://pi4j.com/) is the Java library that gives you access to the hardware I/O of the Raspberry Pi: GPIO pins, I2C, SPI, PWM, and serial communication. With it, you can read a button, blink an LED, or talk to a sensor from plain Java code, running on the Pi itself.
