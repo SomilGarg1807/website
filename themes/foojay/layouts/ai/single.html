@@ -62,7 +62,7 @@
            and lead card the home page shows on a one-post day. */}}
       {{ partial "lead-posts.html" (first 1 .) }}
       <div class="post-grid">
-        {{/* maxCategories 0 -> every category, not the usual first two: on a
+        {{/* maxCategories 0 -> every category, not the usual first five: on a
              portal the chips are how a reader narrows down. */}}
         {{ range after 1 . }}{{ partial "post-card.html" (dict "page" . "maxCategories" 0) }}{{ end }}
       </div>

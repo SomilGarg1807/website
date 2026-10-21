@@ -1,7 +1,7 @@
 {{- /* A post card. Called with the Page itself -- the normal case -- or
        with a dict:
          page            the Page (required)
-         maxCategories   how many category chips to show; 0 = all (default 2)
+         maxCategories   how many category chips to show; 0 = all (default 5)
          compact         the card is NARROW; drop what does not survive it
          eager           this card's image is the page's LCP element
                          (default false -- every card in a listing is lazy)
@@ -20,7 +20,7 @@
        off on a full-width card, since every post there has the same author
        whose portrait is already at the top of the page. */ -}}
 {{- $p := . -}}
-{{- $maxCategories := 2 -}}
+{{- $maxCategories := 5 -}}
 {{- $compact := false -}}
 {{- $eager := false -}}
 {{- /* Default derived from $compact rather than a flat false, so a caller
@@ -29,7 +29,7 @@
 {{- if reflect.IsMap . -}}
   {{- $p = .page -}}
   {{/* isset, not `default`: 0 is a meaningful value here and `default` would
-       read it as "unset" and fall back to 2. */}}
+       read it as "unset" and fall back to 5. */}}
   {{- if isset . "maxCategories" -}}{{- $maxCategories = .maxCategories -}}{{- end -}}
   {{- if isset . "compact" -}}{{- $compact = .compact -}}{{- end -}}
   {{- if isset . "eager" -}}{{- $eager = .eager -}}{{- end -}}
