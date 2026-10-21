@@ -1,6 +1,6 @@
 ---
 title: "OWASP Java Security Libraries: Please Update!"
-date: "2026-01-01"
+date: "2026-10-23"
 description: "Fresh releases of OWASP Java Encoder and Java HTML Sanitizer: what changed, how to use them, and what to check when upgrading."
 authors:
   - "jim-manico"
@@ -8,7 +8,11 @@ image: "owasp-java-security-libraries.png"
 categories:
   - "Java"
   - "Security"
-related_posts: []
+related_posts:
+  - "vibe-coding-maven-and-the-dependencies-you-didnt-choose"
+  - "how-to-secure-a-spring-boot-application-with-openid-connect-and-pac4j"
+  - "openid-federation-with-pac4j-and-cas"
+  - "how-much-will-post-quantum-migration-cost-your-java-codebase"
 ---
 
 Hello Foojay!
