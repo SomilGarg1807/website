@@ -21,7 +21,7 @@ I've been working hard on bringing two Java security libraries up to date: **OWA
 
 My request is pretty simple: **please update if you use these!** And if they matter to your application, I'd love your feedback.
 
-I recently sent a short note about this to the Java Champions mailing list. Frank Delporte invited me to share a little more with the Foojay community. Thanks, Frank! Here is what the libraries do, what has changed, and where I'd start with an upgrade.
+I recently sent a short note about this to the Java Champions mailing list. [Frank Delporte](/today/author/frankdelporte/) invited me to share a little more with the Foojay community. Thanks, Frank! Here is what the libraries do, what has changed, and where I'd start with an upgrade.
 
 ## The releases to look at
 
