@@ -1,6 +1,6 @@
 ---
 title: "Pi4J Drivers V1.2.0: ePaper, DAC/ADC, Motors, and LoRa"
-date: "2026-10-25T07:30:00+00:00"
+date: "2026-10-25"
 description: "Pi4J Drivers V1.2.0 adds ePaper displays with partial updates, new DAC and ADC drivers, motor and servo controllers, and a LoRa transceiver driver for Java on the Raspberry Pi."
 canonical: "https://webtechie.be/post/pi4j-drivers-v1-2-0/"
 authors:

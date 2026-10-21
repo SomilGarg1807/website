@@ -1,6 +1,6 @@
 ---
 title: "Sheetmusic4J 0.0.5: LilyPond Import and Export"
-date: "2026-10-25T07:30:00+00:00"
+date: "2026-10-25"
 description: "Sheetmusic4J 0.0.5 can read and write LilyPond files through the ScoreFile facade, and brings engraving improvements like tuplet placement and octave clefs."
 canonical: "https://webtechie.be/post/sheetmusic4j-0.0.5-lilypond/"
 authors:
