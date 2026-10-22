@@ -21,6 +21,8 @@ related_posts:
 
 Thanks to Dani_E2e on [Reddit](https://www.reddit.com/r/java/comments/1vapmf2/comment/p0ppvzf/) and Jurgen Lambrecht for suggesting LilyPond support!
 
+{{< youtube 8n7WONyX0yk >}}
+
 ## What Is LilyPond?
 
 [LilyPond](https://lilypond.org/) is the free, text-based engraving program that many musicians and publishers use for beautiful printed scores. You write the music as plain text in a `.ly` file, and LilyPond compiles it into a PDF. A lot of classical repertoire, from Bach chorales to full orchestral scores, is available as `.ly` source, for example at the [Mutopia Project](https://www.mutopiaproject.org/).
