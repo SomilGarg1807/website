@@ -1,6 +1,6 @@
 ---
 title: "New Java Features Are Not Just for Interviews. Two Real-World Use Cases from Axelix"
-date: "2026-01-01"
+date: "2026-10-27"
 description: "See how Axelix uses Java ScopedValue to propagate security context and sealed interfaces to protect domain invariants in real-world production code."
 authors:
   - "mikhail-polivakha"
@@ -9,6 +9,11 @@ categories:
   - "Java"
   - "Sealed Classes"
 canonical: "https://axelix.io/blog/java-new-features-in-production"
+related_posts:
+  - "banned-threadlocal-java-scoped-values"
+  - "making-illegal-state-unrepresentable"
+  - "why-another-java-server"
+  - "no-database-operations-found-what-writing-a-spring-boot-analyzer-taught-me-about-spring"
 ---
 
 Hey everyone! Mikhail Polivakha here, technical lead of the [Axelix project](https://github.com/axelixlabs/axelix).
