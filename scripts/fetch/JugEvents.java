@@ -457,6 +457,9 @@ public class JugEvents {
 
     /** One VEVENT -> the event shape data/jug-events.json holds, or null to skip it.
      *  calZone is the feed's X-WR-TIMEZONE, or null when it declares none. */
+    static final Pattern LUMA_DESCRIPTION_LINK =
+            Pattern.compile("Get up-to-date information at:\\s*(https?://\\S+)");
+
     static Map<String, Object> toEvent(Map<String, String> ve, ZoneId calZone) {
         if (ve.getOrDefault("STATUS", "").equalsIgnoreCase("CANCELLED")) return null;
 
@@ -470,11 +473,20 @@ public class JugEvents {
 
         Map<String, Object> event = new LinkedHashMap<>();
         event.put("title", unescapeText(ve.getOrDefault("SUMMARY", "Untitled event")));
-        event.put("url", ve.getOrDefault("URL", ""));
+        String location = unescapeText(ve.get("LOCATION"));
+        // Luma leaves URL empty: the event page is in LOCATION (online) or DESCRIPTION.
+        boolean locationIsLink = location != null && location.matches("(?i)https?://\\S+");
+        String url = ve.getOrDefault("URL", "");
+        if (url.isBlank() && locationIsLink) url = location.strip();
+        if (url.isBlank()) {
+            Matcher m = LUMA_DESCRIPTION_LINK.matcher(String.valueOf(unescapeText(ve.get("DESCRIPTION"))));
+            if (m.find()) url = m.group(1);
+        }
+        event.put("url", url);
         event.put("startTime", start.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
         event.put("endTime", end == null ? null : end.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
 
-        String[] place = splitLocation(unescapeText(ve.get("LOCATION")));
+        String[] place = splitLocation(locationIsLink ? null : location);
         event.put("venue", place[0]);
         event.put("city", place[1]);
         event.put("online", null);
