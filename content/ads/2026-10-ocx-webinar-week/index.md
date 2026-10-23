@@ -5,7 +5,7 @@ link: "https://ocxconf.org/webinar-week/"
 cta: "Register here"
 image: "ocx-webinar-week.png"
 background: "#0a0b2d"
-publishDate: "2026-10-24"
+publishDate: "2026-10-23"
 expiryDate: "2026-11-07"
 sponsor: "foojay"
 sponsored: false
