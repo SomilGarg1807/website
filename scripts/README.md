@@ -13,7 +13,7 @@ They are grouped by **lifetime and job**, not by what they happen to be called:
 | --- | --- | --- |
 | `fetch/` | pulls data from community-run upstreams into `data/*` | CI, and by hand |
 | `validate/` | PR-time content checks | CI |
-| `notify/` | tells Slack what was published (`SlackPosts.java`) | CI, after a deploy and every Monday |
+| `notify/` | tells Slack what was published (`SlackPosts.java`); tells an article's authors a reader started a discussion (`DiscussionAuthors.java`) | CI, after a deploy, every Monday, and when a discussion is created |
 
 **`transfer/`, `cleanup/` and `shared/` are gone**, deleted at cutover.
 `transfer/` scraped the live WordPress site
