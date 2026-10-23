@@ -27,7 +27,9 @@
   <section class="widget widget-categories">
     <h2>Categories</h2>
     <ul>
-      {{ range first 10 .Site.Taxonomies.categories.ByCount }}
+      {{/* Shuffled for the same reason as Authors below: a fixed top-N is
+           the same names on every page. */}}
+      {{ range first 5 (shuffle .Site.Taxonomies.categories.ByCount) }}
         <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="count">{{ .Count }}</span></a></li>
       {{ end }}
     </ul>
