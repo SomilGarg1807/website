@@ -2057,6 +2057,7 @@ a.event-strip__title:hover { color: var(--brand-accent-strong); text-decoration:
 .cal-dialog__when { margin: 0; color: var(--brand-accent-strong); font-weight: 600; }
 .cal-dialog__where { margin: .3rem 0 0; color: var(--ink-muted); font-size: .92rem; }
 .cal-dialog__link { margin-top: 1.1rem; }
+.cal-dialog__link[hidden] { display: none; }
 
 @media (max-width: 64rem) {
   .calendar { grid-template-columns: 1fr; }
