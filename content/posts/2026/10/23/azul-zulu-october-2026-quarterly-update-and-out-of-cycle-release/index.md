@@ -128,7 +128,9 @@ Azul reduces testing on platforms that reached end of life: Debian 11, Ubuntu 18
 
 This release ships [IANA Time Zone Database](https://www.iana.org/time-zones) version 2026e.
 
-### Version Bumps
+## Version Bumps
+
+These are the version numbers of the October 2026 out-of-cycle release. 
 
 | Release | OpenJDK PSU  | Azul Zulu CPU  |
 |---------|-------------|-------------|
