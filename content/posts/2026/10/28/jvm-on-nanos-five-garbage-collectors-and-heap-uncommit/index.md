@@ -1,6 +1,6 @@
 ---
 title: "JVM on Nanos: Five Garbage Collectors, Same Trade-offs, and Working Heap Uncommit"
-date: "2026-10-23"
+date: "2026-10-28"
 description: "Testing five HotSpot garbage collectors and heap uncommit on Nanos, revisiting the Akamas study with Eclipse Temurin 25 and Renaissance."
 authors:
   - "angelo-rubini"
@@ -9,12 +9,16 @@ categories:
   - "Java"
   - "OpenJDK"
   - "Performance"
-related_posts: []
+related_posts:
+  - "unikernel-profiling-and-troubleshooting-jvm-on-nanos-unikernel"
+  - "aws-nitro-and-cpu-graviton-meets-unikernels"
+  - "the-ultimate-10-years-java-garbage-collection-guide-2016-2026-choosing-the-right-gc-for-every-workload"
+  - "does-java-really-use-too-much-memory-lets-look-at-the-facts-jeps"
 ---
 
 *Building on Akamas's “Choosing the right GC for maximum performance” study: Eclipse Temurin 25, Renaissance, and Nanos on Oracle Cloud ARM64.*
 
-![JVM on Nanos: five HotSpot garbage collectors, heap uncommit, Renaissance, and Oracle OCI Ampere Altra](jvm_on_nanos_cover.png)
+![JVM on Nanos: five HotSpot garbage collectors, heap uncommit, Renaissance, and Oracle OCI Ampere Altra](jvm_on_nanos_cover.jpg)
 
 ## Still skeptical about running the JVM on a unikernel?
 
