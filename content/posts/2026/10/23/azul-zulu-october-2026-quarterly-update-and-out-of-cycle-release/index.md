@@ -85,7 +85,7 @@ That is 545 non-security changes in total. They include new functionality, such 
 
 Any of these changes can introduce instability: 1 in 5 OpenJDK PSUs over the past six years caused a regression. So when you must patch urgently, the CPU builds are the fastest safe path to production.
 
-### What Changes in the October 2026 Update
+### Changes in the October 2026 Update
 
 Check the [full release notes](https://docs.azul.com/core/release/october-2026/release-notes) for every detail. These changes stand out.
 
