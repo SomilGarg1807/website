@@ -9,6 +9,8 @@
        maxNames      above this many authors, render "N authors" instead of
                      the names (0, the default, always names everyone)
        pagefindMeta  stamp data-pagefind-meta="author" on the wrapper
+       listAll       with avatars, keep every face WITH its name instead of
+                     collapsing two or more into the pile (room permitting)
        avatars       show each author's face before their name (default
                      false). Above ONE author this becomes a row of
                      overlapping faces plus a count -- the $pile branch.
@@ -33,12 +35,14 @@
 {{ $maxNames := 0 }}
 {{ $pagefindMeta := false }}
 {{ $avatars := false }}
+{{ $listAll := false }}
 {{ $authors := slice }}
 {{ if reflect.IsMap . }}
   {{ $p = .page }}
   {{ if isset . "maxNames" }}{{ $maxNames = .maxNames }}{{ end }}
   {{ if isset . "pagefindMeta" }}{{ $pagefindMeta = .pagefindMeta }}{{ end }}
   {{ if isset . "avatars" }}{{ $avatars = .avatars }}{{ end }}
+  {{ if isset . "listAll" }}{{ $listAll = .listAll }}{{ end }}
   {{ if isset . "authors" }}{{ $authors = .authors }}{{ end }}
 {{ end }}
 {{ with $p }}
@@ -46,7 +50,7 @@
   {{ if and (not $authors) .Params.author }}{{ $authors = slice .Params.author }}{{ end }}
 {{ end }}
 {{ with $authors }}
-{{- $pile := and $avatars (ge (len $authors) 2) -}}
+{{- $pile := and $avatars (ge (len $authors) 2) (not $listAll) -}}
 {{- /* Resolved before the wrapper, because the wrapper carries them when the
        names are not in the visible text -- see $pile below. Through
        author-names.html so the byline and the share text cannot disagree. */ -}}

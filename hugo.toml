@@ -302,6 +302,14 @@ enableGitInfo = true
   [menu.main.params]
     desc = "Every topic the community writes about, A-Z"
 
+[[menu.main]]
+  name = "Coming soon..."
+  parent = "News"
+  url = "/today/coming-soon/"
+  weight = 18
+  [menu.main.params]
+    desc = "Scheduled content that will appear on foojay.io in the future"
+
 # ---------------------------------------------------------------------------
 
 [[menu.main]]

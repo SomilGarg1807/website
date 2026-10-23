@@ -34,7 +34,7 @@
     {{ end }}
   </div>
   <div class="widget-featured-authors__actions">
-    <a class="view-all" href="{{ "today/author/" | relURL }}">View all authors</a>
+    <a class="view-all" href="{{ "today/author/" | relURL }}">All authors</a>
     {{ with $announcement }}<a class="view-all" href="{{ . | strings.TrimPrefix "/" | relURL }}">Read more</a>{{ end }}
   </div>
 </section>

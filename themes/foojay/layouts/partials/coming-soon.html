@@ -1,97 +1,12 @@
-{{/* "Coming Soon" -- posts written and scheduled but not yet published.
-
-     WHY THIS READS THE FILESYSTEM INSTEAD OF RANGING OVER PAGES. `buildFuture`
-     is false, so a post with a future `date:` is skipped ENTIRELY -- no page,
-     and no entry in site.Pages, any list, term, feed, sitemap or the Pagefind
-     index. That is exactly what scheduling wants, but it means no template can
-     `range` for these, so they are read as DATA, off disk.
-
-     Turning `buildFuture` on instead would put them back in reach at the price
-     of a `where .Date "lt" now` in every list, term, feed and JSON-LD template
-     plus the Pagefind body -- and ONE missed spot publishes an embargoed
-     article early, silently.
-
-     Nothing here is authored: scheduling is a future `date:` and the usual
-     folder. No `scheduled:` flag to set, and none to forget to unset.
-
-     COMPARISON IS BY DAY, NOT INSTANT. Every post goes out at the one daily
-     build, so a scheduled post is dated `YYYY-MM-DD` with no time and
-     checkPostDates rejects one that carries a time. Day granularity is also
-     Hugo's own rule -- a date-only post is midnight UTC -- so the two cannot
-     drift into a post listed neither here nor on the site.
-
-     Only this month and the next three are scanned, day folders from today
-     onwards: ~4 directory listings, not a walk of 2000 posts. A post further
-     out is not shown, and not lost -- it publishes off its own date. */}}
-
-{{ $today := now.UTC.Format "2006-01-02" }}
-{{ $scheduled := slice }}
-
-{{/* Anchored to the FIRST of the month before adding months: Go's AddDate
-     normalises overflow, so "31 August" + 1 month is 1 October and September
-     would never be scanned at all. */}}
-{{ $monthStart := time.AsTime (printf "%s-01T00:00:00Z" (now.UTC.Format "2006-01")) }}
-
-{{ range $i := seq 0 3 }}
-  {{ $month := $monthStart.AddDate 0 $i 0 }}
-  {{ $monthDir := printf "content/posts/%s" ($month.Format "2006/01") }}
-  {{ if fileExists $monthDir }}
-    {{ range $day := os.ReadDir $monthDir }}
-      {{ if $day.IsDir }}
-        {{ $folderDate := printf "%s-%s" ($month.Format "2006-01") $day.Name }}
-        {{/* ISO dates compare correctly as strings. A day folder at or behind
-             today holds nothing pending, and skipping it is what keeps this
-             cheap enough to run on every build. */}}
-        {{ if gt $folderDate $today }}
-          {{ $dayDir := printf "%s/%s" $monthDir $day.Name }}
-          {{ range $bundle := os.ReadDir $dayDir }}
-            {{ if $bundle.IsDir }}
-              {{/* Either content file: an AsciiDoc article schedules like a
-                   Markdown one, and reading only index.md would leave it out
-                   of here while it still publishes on its own date. */}}
-              {{ $file := printf "%s/%s/index.md" $dayDir $bundle.Name }}
-              {{ if not (fileExists $file) }}
-                {{ $file = printf "%s/%s/index.adoc" $dayDir $bundle.Name }}
-              {{ end }}
-              {{ with partial "frontmatter.html" $file }}
-                {{/* The post's own `date:` decides, never the folder, which
-                     only narrows which files are worth opening.
-
-                     THE FIRST TEN CHARACTERS, because YAML hands this back in
-                     three shapes that all start with the ISO day: quoted
-                     date-only, quoted legacy with a time, and unquoted as a
-                     Go time.Time. MATCHED rather than parsed, because
-                     time.AsTime halts the build on anything it cannot read --
-                     and this is the one place reading a file Hugo itself
-                     declined to parse. Anything unrecognisable is left out
-                     quietly and reported by checkPostDates. */}}
-                {{ $date := substr (printf "%v" (.date | default "")) 0 10 }}
-                {{ if and (findRE `^\d{4}-\d{2}-\d{2}$` $date) (gt $date $today) }}
-                  {{ $scheduled = $scheduled | append (dict
-                       "title" (.title | default $bundle.Name)
-                       "date" $date
-                       "authors" (.authors | default slice)) }}
-                {{ end }}
-              {{ end }}
-            {{ end }}
-          {{ end }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
-{{ end }}
-
-{{/* Renders NOTHING when nothing is scheduled -- the normal state, and an
-     empty "Coming soon" heading is worse than no section.
-
-     A SIDEBAR WIDGET, not a band: the queue is usually one or two items, and
-     a full-width band spent a screen of a phone on two lines of text. In the
-     aside, one or five items look equally at home. */}}
-{{ with sort $scheduled "date" }}
+{{/* Home page aside widget: the queue from scheduled-posts.html, titles as plain text because the pages do not exist yet. */}}
+{{/* Nothing is rendered when nothing is scheduled: an empty "Coming soon"
+     heading is worse than no section. A sidebar widget, not a band -- the queue
+     is usually one or two items. */}}
+{{ with partial "scheduled-posts.html" . }}
 <section class="widget widget-coming-soon">
   <h2>Coming soon</h2>
   <ul class="coming-soon-side">
-    {{ range . }}
+    {{ range first 5 . }}
       {{ $when := time.AsTime (printf "%sT00:00:00Z" .date) }}
       <li class="coming-soon-side__item">
         {{/* Plain text, not a link: the page does not exist yet, and a "coming
@@ -111,5 +26,6 @@
       </li>
     {{ end }}
   </ul>
+  <a href="{{ "today/coming-soon/" | relURL }}" class="view-all">All upcoming posts</a>
 </section>
 {{ end }}

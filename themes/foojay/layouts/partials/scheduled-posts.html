@@ -1,0 +1,74 @@
+{{- /* Posts written and scheduled but not yet published, sorted by date, read
+       OFF DISK: `buildFuture` is false, so no Page exists for them and no
+       template can `range` over one. Shared by the home page widget and
+       /today/coming-soon/.
+
+       Turning `buildFuture` on instead would need a `where .Date "lt" now` in
+       every list, term, feed and JSON-LD template plus the Pagefind body, and
+       ONE missed spot publishes an embargoed article early, silently.
+
+       Compared by DAY, as Hugo does for a date-only post (midnight UTC), so
+       this and the site cannot disagree. Only this month and the next three
+       are scanned, day folders from today onwards; a post further out is not
+       shown, and not lost -- it publishes off its own date. */ -}}
+
+{{ $today := now.UTC.Format "2006-01-02" }}
+{{ $scheduled := slice }}
+
+{{/* Anchored to the FIRST of the month before adding months: Go's AddDate
+     normalises overflow, so "31 August" + 1 month is 1 October and September
+     would never be scanned at all. */}}
+{{ $monthStart := time.AsTime (printf "%s-01T00:00:00Z" (now.UTC.Format "2006-01")) }}
+
+{{ range $i := seq 0 3 }}
+  {{ $month := $monthStart.AddDate 0 $i 0 }}
+  {{ $monthDir := printf "content/posts/%s" ($month.Format "2006/01") }}
+  {{ if fileExists $monthDir }}
+    {{ range $day := os.ReadDir $monthDir }}
+      {{ if $day.IsDir }}
+        {{ $folderDate := printf "%s-%s" ($month.Format "2006-01") $day.Name }}
+        {{/* ISO dates compare correctly as strings. A day folder at or behind
+             today holds nothing pending, and skipping it is what keeps this
+             cheap enough to run on every build. */}}
+        {{ if gt $folderDate $today }}
+          {{ $dayDir := printf "%s/%s" $monthDir $day.Name }}
+          {{ range $bundle := os.ReadDir $dayDir }}
+            {{ if $bundle.IsDir }}
+              {{/* Either content file: an AsciiDoc article schedules like a
+                   Markdown one, and reading only index.md would leave it out
+                   of here while it still publishes on its own date. */}}
+              {{ $file := printf "%s/%s/index.md" $dayDir $bundle.Name }}
+              {{ if not (fileExists $file) }}
+                {{ $file = printf "%s/%s/index.adoc" $dayDir $bundle.Name }}
+              {{ end }}
+              {{ with partial "frontmatter.html" $file }}
+                {{/* The post's own `date:` decides, never the folder, which
+                     only narrows which files are worth opening.
+
+                     THE FIRST TEN CHARACTERS, because YAML hands this back in
+                     three shapes that all start with the ISO day: quoted
+                     date-only, quoted legacy with a time, and unquoted as a
+                     Go time.Time. MATCHED rather than parsed, because
+                     time.AsTime halts the build on anything it cannot read --
+                     and this is the one place reading a file Hugo itself
+                     declined to parse. Anything unrecognisable is left out
+                     quietly and reported by checkPostDates. */}}
+                {{ $date := substr (printf "%v" (.date | default "")) 0 10 }}
+                {{ if and (findRE `^\d{4}-\d{2}-\d{2}$` $date) (gt $date $today) }}
+                  {{ $scheduled = $scheduled | append (dict
+                       "title" (.title | default $bundle.Name)
+                       "date" $date
+                       "description" (.description | default "")
+                       "categories" (.categories | default slice)
+                       "authors" (.authors | default slice)) }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ return (sort $scheduled "date") }}

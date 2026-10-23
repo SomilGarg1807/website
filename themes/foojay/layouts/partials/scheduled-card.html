@@ -1,0 +1,15 @@
+{{- /* post-card.html for a post that has no Page yet (see scheduled-posts.html):
+       same markup and classes, but no links and no image: neither the page
+       nor its bundle is published. Given one scheduled-posts entry. */ -}}
+<article class="post-card">
+  <div class="post-card-meta">
+    {{ partial "byline.html" (dict "authors" .authors "avatars" true "listAll" true "maxNames" 5) }}
+    {{ with .categories }}
+    <div class="post-card-categories">
+      {{ range first 5 . }}<span>{{ partialCached "category-name.html" . . }}</span>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+  <h3 class="post-card-title">{{ .title }}</h3>
+  {{ with .description }}<p class="post-card-excerpt">{{ . }}</p>{{ end }}
+</article>

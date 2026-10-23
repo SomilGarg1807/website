@@ -550,7 +550,8 @@ JS-level notes for the sections below.
   maintainer moving `draft/<slug>/` into `content/posts/<y>/<m>/<d>/`.
 
   Four pieces make it work, three because the default breaks something:
-  1. **`partials/coming-soon.html` reads pending posts OFF DISK**, since no
+  1. **`partials/scheduled-posts.html` reads pending posts OFF DISK** (the home
+     widget `coming-soon.html` and `/today/coming-soon/` both render its list), since no
      template can `range` a page that was never built. It is the home page
      aside widget: four directory listings per build, not a walk of 2163 posts.
      Titles are **plain text, not links** — the page does not exist yet.

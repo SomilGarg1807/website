@@ -1144,7 +1144,7 @@ a.event-strip__title:hover { color: var(--brand-accent-strong); text-decoration:
 .post-card-categories, .post-categories, .chip-row {
   display: flex; flex-wrap: wrap; gap: .4rem;
 }
-.post-card-categories a, .post-categories a, .chip-row a {
+.post-card-categories a, .post-card-categories span, .post-categories a, .chip-row a {
   font-family: var(--font-body); font-size: .82rem; font-weight: 600;
   padding: .2rem .55rem; border-radius: var(--radius-sm);
   background: var(--tag-soft); color: var(--tag-text);
@@ -4516,3 +4516,15 @@ th[aria-sort="descending"] .sort-btn::after { content: "\2193"; opacity: 1; }
 .review-also__list li { padding-block: .6rem; }
 .review-also__by { font-size: .9rem; }
 .review-also__by .byline { display: inline-flex; align-items: center; min-height: 24px; }
+
+/* /today/coming-soon/: one heading per publish day, over that day's cards. */
+.coming-soon-day + .coming-soon-day { margin-top: 2.25rem; }
+.coming-soon-day__title {
+  margin: 0 0 1rem; padding-bottom: .4rem;
+  border-bottom: 1px solid var(--border, currentColor);
+  font-size: 1.15rem;
+}
+.coming-soon-day__list { display: grid; gap: 1.5rem; }
+.coming-soon-day__list .post-card-excerpt { max-width: none; }
+.coming-soon-day__list .post-card-meta { align-items: center; }
+.coming-soon-day__list .post-card-categories { margin-left: auto; justify-content: flex-end; }

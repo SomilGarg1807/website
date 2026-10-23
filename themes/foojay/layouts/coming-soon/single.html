@@ -1,0 +1,35 @@
+{{ define "main" }}
+{{/* /today/coming-soon/ -- the queue the home page widget teases, read off
+     disk by scheduled-posts.html. Cards are not links: those pages do not
+     exist until their date. */}}
+{{ $posts := partial "scheduled-posts.html" . }}
+
+<div class="page-head">
+  <div class="page-head__inner">
+    <span class="page-back"><a href="{{ "today/" | relURL }}">News</a></span>
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}<div class="page-head__intro prose">{{ . }}</div>{{ end }}
+  </div>
+</div>
+
+<div class="content-col full-width">
+  {{ if $posts }}
+  {{/* Sorted by date, so a day's posts are adjacent: open a section on the
+       first of each date. */}}
+  {{ $day := "" }}
+  {{ range $posts }}
+    {{ if ne .date $day }}
+      {{ if $day }}</div></section>{{ end }}
+      {{ $day = .date }}
+  <section class="coming-soon-day">
+    <h2 class="coming-soon-day__title"><time datetime="{{ .date }}">{{ (time.AsTime (printf "%sT00:00:00Z" .date)).Format "Monday, 2 January 2006" }}</time></h2>
+    <div class="coming-soon-day__list">
+    {{ end }}
+      {{ partial "scheduled-card.html" . }}
+  {{ end }}
+    </div></section>
+  {{ else }}
+  <p>Nothing is scheduled right now. Check back soon, or browse <a href="{{ "today/" | relURL }}">the latest articles</a>.</p>
+  {{ end }}
+</div>
+{{ end }}
