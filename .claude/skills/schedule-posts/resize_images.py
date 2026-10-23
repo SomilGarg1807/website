@@ -98,9 +98,9 @@ rewritten -- a separate and much riskier job. The 1 GB limit is on the artifact,
 so this fixes the actual failure.
 
 Usage:
-  python3 .claude/resize_images.py --dry-run
-  python3 .claude/resize_images.py
-  python3 .claude/resize_images.py --path content/posts/2024
+  python3 .claude/skills/schedule-posts/resize_images.py --dry-run
+  python3 .claude/skills/schedule-posts/resize_images.py
+  python3 .claude/skills/schedule-posts/resize_images.py --path content/posts/2024
 """
 
 import argparse

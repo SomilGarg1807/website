@@ -66,7 +66,7 @@ history rather than a delete plus an add.
 ### Resize the images
 
 ```
-python3 .claude/resize_images.py --path content/posts/YYYY/MM/DD/SLUG
+python3 .claude/skills/schedule-posts/resize_images.py --path content/posts/YYYY/MM/DD/SLUG
 ```
 
 Run this after the move, on the new path. It caps the long edge at 1600px,
@@ -104,3 +104,11 @@ already uses. Publishing needs nothing further from you.
 `publish-scheduled.yml` checks twice a day, at 07:07 and 14:07 Brussels time,
 whether a post has come due, and asks `build-deploy.yml` to deploy when one
 has.
+
+### Clean up
+
+Delete empty `.claude` directories the tooling left in subfolders, never the one at the repo root:
+
+```
+find . -mindepth 2 -type d -name .claude -not -path './.git/*' | while read d; do rmdir "$d/.cc-writes" 2>/dev/null; rmdir "$d"; done
+```
