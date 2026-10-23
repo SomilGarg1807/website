@@ -1,7 +1,7 @@
 ---
 title: "Create an Uber Clone in 1 Minute"
-date: "2026-10-23"
-description: "Own a full-stack Java ride-hailing application: rider, driver and admin apps, payments, live tracking and push. Customize Wayline under the royalty-free..."
+date: "2026-10-24"
+description: "Own a full-stack Java ride-hailing application: rider, driver and admin apps, payments, live tracking and push."
 authors: ["shai-almog"]
 image: "create-an-uber-clone-in-1-minute-0a72804819.jpg"
 categories: ["Java"]
@@ -13,7 +13,6 @@ canonical: "https://www.codenameone.com/blog/create-an-uber-clone-in-1-minute/"
 A lot has changed since 2018, both in programming and in Codename One. Back then I wrote [Create an Uber Clone in 7 Days: Build a real world full stack mobile app in Java](https://www.amazon.com/Create-Uber-Clone-Days-mobile/dp/1983258784). Today you can start with the application those seven days were meant to teach you to build, then spend your time making it yours.
 
 <aside style="border-left: 4px solid #007aff; padding: 14px 18px; margin: 24px 0; border-radius: 4px; font-size: 0.95em;"><strong>What is Codename One?</strong> Codename One is an open-source framework for building native iOS, Android, desktop, and web apps from a single Java or Kotlin codebase. Learn more at <a href="https://www.codenameone.com/">codenameone.com</a>.</aside>
-
 
 Meet **Wayline**, a full-stack, white-label ride-hailing application written in Java. Rider and driver apps, an administration console, payments, live tracking and push notifications are already connected to a Java backend. You get the application and its source, ready to adapt to your business. Open the [Initializr](https://www.codenameone.com/initializr/), choose Wayline, give it your own name and package, and generate the project. That's the one-minute task. Downloads and a first build depend on your machine; launching a real transport service still takes real work.
 
@@ -30,13 +29,11 @@ Today is the full application tour, including the code and the parts you would a
 - **Wednesday, October 21:** [Let Users Install Your Java Web App Again](https://www.codenameone.com/blog/install-your-java-web-app-again/). PWA support returns to the ParparVM JavaScript port.
 - **Thursday, October 22:** [A Java IDE in Your Browser, With Your Files in Your Browser](https://www.codenameone.com/blog/not-a-cloud-ide/). An early preview of what I'm calling Not a Cloud IDE.
 
-
-<div class="release-screenshots" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:16px;align-items:start;margin:24px 0">
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-rider-home.png"><img width="420" height="909" src="wayline-rider-home-d36801c194.png" alt="Choose a destination." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Choose a destination.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-driver-offer.png"><img width="420" height="909" src="wayline-driver-offer-a6c2321461.png" alt="Accept a ride as a driver." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Accept a ride as a driver.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-admin-dashboard.png"><img width="420" height="909" src="wayline-admin-dashboard-8104f2de63.png" alt="Manage the service." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Manage the service.</figcaption></figure>
-</div>
-
+{{< gallery cols="3" >}}
+wayline-rider-home-d36801c194.png | Choose a destination.
+wayline-driver-offer-a6c2321461.png | Accept a ride as a driver.
+wayline-admin-dashboard-8104f2de63.png | Manage the service.
+{{< /gallery >}}
 
 ## A full-stack Java application you can make your own
 
@@ -84,26 +81,22 @@ The application opens in the mode that fits the signed-in user. Riders get the b
 
 A new user registers, verifies a phone number and chooses whether to share usage statistics. The development profile displays verification codes instead of sending an SMS, so you can try the flow before connecting a provider.
 
-
-<div class="release-screenshots" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:16px;align-items:start;margin:24px 0">
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-welcome.png"><img width="420" height="909" src="wayline-welcome-5859970ca3.png" alt="Sign in, create an account or choose the server." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Sign in, create an account or choose the server.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-register.png"><img width="420" height="909" src="wayline-register-fde7d7972d.png" alt="Register to ride or apply to drive." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Register to ride or apply to drive.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-verify-phone.png"><img width="420" height="909" src="wayline-verify-phone-2bd7b9c802.png" alt="Verify a phone number; development shows the code." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Verify a phone number; development shows the code.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-analytics-consent.png"><img width="420" height="909" src="wayline-analytics-consent-3e36f6aca7.png" alt="Choose whether this device shares usage statistics." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Choose whether this device shares usage statistics.</figcaption></figure>
-</div>
-
+{{< gallery cols="4" >}}
+wayline-welcome-5859970ca3.png | Sign in, create an account or choose the server.
+wayline-register-fde7d7972d.png | Register to ride or apply to drive.
+wayline-verify-phone-2bd7b9c802.png | Verify a phone number; development shows the code.
+wayline-analytics-consent-3e36f6aca7.png | Choose whether this device shares usage statistics.
+{{< /gallery >}}
 
 The rider searches for a destination, sees the route and compares three vehicle categories with a fare for each. Home and Work shortcuts save repeated typing. Ride preferences cover quiet trips, accessibility and pets, and can restrict matching to women drivers based on the driver's profile.
 
 After requesting, the rider follows the approaching driver, sees the car and plate, and can call or message them. At the end, the flow moves to a rating, optional tip and itemized receipt.
 
-
-<div class="release-screenshots" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:16px;align-items:start;margin:24px 0">
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-ride-quote.png"><img width="420" height="909" src="wayline-ride-quote-180004364e.png" alt="Compare vehicle categories and quoted fares." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Compare vehicle categories and quoted fares.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-ride-driver-on-the-way.png"><img width="420" height="909" src="wayline-ride-driver-on-the-way-442b6b83fd.png" alt="Follow the driver to pickup." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Follow the driver to pickup.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-ride-receipt.png"><img width="420" height="909" src="wayline-ride-receipt-a294b701bb.png" alt="Rate the completed ride and choose a tip." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Rate the completed ride and choose a tip.</figcaption></figure>
-</div>
-
+{{< gallery cols="3" >}}
+wayline-ride-quote-180004364e.png | Compare vehicle categories and quoted fares.
+wayline-ride-driver-on-the-way-442b6b83fd.png | Follow the driver to pickup.
+wayline-ride-receipt-a294b701bb.png | Rate the completed ride and choose a tip.
+{{< /gallery >}}
 
 The screen follows the server's state. A button asks for a change; the server decides whether that change is valid. The repositories use conditional updates so competing actions can be settled by the database. That matters when a cancellation and an acceptance arrive together.
 
@@ -140,22 +133,18 @@ flowchart LR
 
 A ride-hailing demo that stops at the passenger screen leaves most of the service for you to build. Wayline includes driver signup, document submission and review, then the actual working day.
 
-
-<div class="release-screenshots" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:16px;align-items:start;margin:24px 0">
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-onboarding-documents.png"><img width="420" height="909" src="wayline-onboarding-documents-2b5b993301.png" alt="Submit the documents needed to apply." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Submit the documents needed to apply.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-onboarding-under-review.png"><img width="420" height="909" src="wayline-onboarding-under-review-d0157eca7c.png" alt="See where an application stands." loading="lazy" style="width:100%;height:auto" /></a><figcaption>See where an application stands.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-driver-offline.png"><img width="420" height="909" src="wayline-driver-offline-644694b9ae.png" alt="Go online when ready to take rides." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Go online when ready to take rides.</figcaption></figure>
-</div>
-
+{{< gallery cols="3" >}}
+wayline-onboarding-documents-2b5b993301.png | Submit the documents needed to apply.
+wayline-onboarding-under-review-d0157eca7c.png | See where an application stands.
+wayline-driver-offline-644694b9ae.png | Go online when ready to take rides.
+{{< /gallery >}}
 
 An offer shows the pickup, destination, fare and a countdown. During a trip the driver sees the route and the next action, including the amount to collect for a cash ride. The earnings view shows daily totals and the balance recorded by the service.
 
-
-<div class="release-screenshots" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:16px;align-items:start;margin:24px 0">
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-driver-on-trip.png"><img width="420" height="909" src="wayline-driver-on-trip-bea3000a43.png" alt="Follow the trip and complete it." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Follow the trip and complete it.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-driver-earnings.png"><img width="420" height="909" src="wayline-driver-earnings-25e8abba11.png" alt="Inspect earnings and the recorded payout balance." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Inspect earnings and the recorded payout balance.</figcaption></figure>
-</div>
-
+{{< gallery cols="2" >}}
+wayline-driver-on-trip-bea3000a43.png | Follow the trip and complete it.
+wayline-driver-earnings-25e8abba11.png | Inspect earnings and the recorded payout balance.
+{{< /gallery >}}
 
 When the driver switches to a navigation app or locks the phone, the mobile background-location service keeps reporting during the shift. Reports are spaced by time and distance instead of forwarding every location change. iOS uses background location; Android uses a location foreground service. The browser and desktop preview don't reproduce that mobile background behavior.
 
@@ -284,22 +273,18 @@ Someone has to approve drivers, answer a payment question and find out why a rid
 
 On a phone, administration is one screen at a time. The dashboard starts with work needing attention, then shows current activity and trends. An application review includes documents, and moderation records both the reason and the administrator responsible.
 
-
-<div class="release-screenshots" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:16px;align-items:start;margin:24px 0">
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-admin-trends.png"><img width="420" height="909" src="wayline-admin-trends-c04ae14028.png" alt="Inspect daily rides and fares." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Inspect daily rides and fares.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-admin-application.png"><img width="420" height="909" src="wayline-admin-application-c08dafddc7.png" alt="Review a driver application." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Review a driver application.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-admin-user.png"><img width="420" height="909" src="wayline-admin-user-cb7f699367.png" alt="See an account and its moderation history." loading="lazy" style="width:100%;height:auto" /></a><figcaption>See an account and its moderation history.</figcaption></figure>
-</div>
-
+{{< gallery cols="3" >}}
+wayline-admin-trends-c04ae14028.png | Inspect daily rides and fares.
+wayline-admin-application-c08dafddc7.png | Review a driver application.
+wayline-admin-user-cb7f699367.png | See an account and its moderation history.
+{{< /gallery >}}
 
 On a wide screen, the same app becomes a console with navigation and room for a list beside the selected item. This is a layout you can work in all day:
 
-
-<div class="release-screenshots" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;align-items:start;margin:24px 0">
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-admin-desktop-dashboard.png"><img width="1280" height="754" src="wayline-admin-desktop-dashboard-f7f964b195.png" alt="The wide dashboard puts activity and trends together." loading="lazy" style="width:100%;height:auto" /></a><figcaption>The wide dashboard puts activity and trends together.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-admin-desktop-applications.png"><img width="1280" height="754" src="wayline-admin-desktop-applications-5637a34f5f.png" alt="Review applications without losing the list." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Review applications without losing the list.</figcaption></figure>
-</div>
-
+{{< gallery cols="2" >}}
+wayline-admin-desktop-dashboard-f7f964b195.png | The wide dashboard puts activity and trends together.
+wayline-admin-desktop-applications-5637a34f5f.png | Review applications without losing the list.
+{{< /gallery >}}
 
 Flagging and blocking aren't the same operation. A flag calls attention to an account; a block signs it out and prevents access until it is lifted. The people view includes role changes, ride history and financial totals. The rides view lets an administrator inspect or cancel work and request a card refund where applicable.
 
@@ -314,33 +299,27 @@ if (suspended && signIn.isEnabled() && cleanup.inRideUnderWay(username)) {
 
 The operation runs in a transaction and records who changed the account and why. The administrator must end the ride first. That rule protects both participants even if moderation is invoked through a different client.
 
-
-<div class="release-screenshots" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;align-items:start;margin:24px 0">
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-admin-desktop-user.png"><img width="1280" height="754" src="wayline-admin-desktop-user-d011f16c2d.png" alt="Search accounts, change roles and inspect history." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Search accounts, change roles and inspect history.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-admin-desktop-rides.png"><img width="1280" height="754" src="wayline-admin-desktop-rides-ffee4c118c.png" alt="Filter and inspect rides across the service." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Filter and inspect rides across the service.</figcaption></figure>
-</div>
-
+{{< gallery cols="2" >}}
+wayline-admin-desktop-user-d011f16c2d.png | Search accounts, change roles and inspect history.
+wayline-admin-desktop-rides-ffee4c118c.png | Filter and inspect rides across the service.
+{{< /gallery >}}
 
 Pricing is editable: base fare, distance, time, minimum fare, fees, commission, and multipliers. The payments list distinguishes a completed refund from one still pending. The live map shows online cars, and the guide screenshot below captures its empty state rather than inventing a busy fleet.
 
-
-<div class="release-screenshots" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;align-items:start;margin:24px 0">
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-admin-desktop-payments.png"><img width="1280" height="754" src="wayline-admin-desktop-payments-30223edc56.png" alt="Inspect charges and their payment state." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Inspect charges and their payment state.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-admin-desktop-pricing.png"><img width="1280" height="754" src="wayline-admin-desktop-pricing-dd779222f8.png" alt="Set the service prices in the console." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Set the service prices in the console.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-admin-desktop-live-map.png"><img width="1280" height="754" src="wayline-admin-desktop-live-map-e84baa9d53.png" alt="The live map, here with no drivers online." loading="lazy" style="width:100%;height:auto" /></a><figcaption>The live map, here with no drivers online.</figcaption></figure>
-</div>
-
+{{< gallery cols="3" >}}
+wayline-admin-desktop-payments-30223edc56.png | Inspect charges and their payment state.
+wayline-admin-desktop-pricing-dd779222f8.png | Set the service prices in the console.
+wayline-admin-desktop-live-map-e84baa9d53.png | The live map, here with no drivers online.
+{{< /gallery >}}
 
 ## Billing includes the awkward cases
 
 The wallet stores payment methods, and receipts break down the fare. Development uses simulated cards with test behavior for success, decline and uncertain results. Real payment providers sit behind a `PaymentProvider` interface.
 
-
-<div class="release-screenshots" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:16px;align-items:start;margin:24px 0">
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-wallet.png"><img width="420" height="909" src="wayline-wallet-a981f5aaf2.png" alt="Keep a default card or choose cash." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Keep a default card or choose cash.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-receipt.png"><img width="420" height="909" src="wayline-receipt-ddcc6933c1.png" alt="Read the fare breakdown and payment result." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Read the fare breakdown and payment result.</figcaption></figure>
-</div>
-
+{{< gallery cols="2" >}}
+wayline-wallet-a981f5aaf2.png | Keep a default card or choose cash.
+wayline-receipt-ddcc6933c1.png | Read the fare breakdown and payment result.
+{{< /gallery >}}
 
 A completed ride and a settled payment are separate facts. Wayline commits the trip, calls the payment provider without holding that database transaction open, then records the result. Charges carry a key derived from the ride so retrying an uncertain request can reuse the same payment identity. This call from `Payments.settle()` makes that key explicit:
 
@@ -386,12 +365,10 @@ You can point the app at your own tile and routing services, or choose hosted pr
 
 That changes the question from “which map vendor must this application use?” to “which service fits this region and volume?” The [maps chapter of the implementor's guide](https://www.codenameone.com/developer-guide/wayline-implementors-guide/#wayline-maps-data) shows the replacement points and the decisions to make before launch.
 
-
-<div class="release-screenshots" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;align-items:start;margin:24px 0">
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-rider-home-dark.png"><img width="420" height="909" src="wayline-rider-home-dark-00e75fb6b9.png" alt="The vector map follows the dark theme." loading="lazy" style="width:100%;height:auto" /></a><figcaption>The vector map follows the dark theme.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-rider-desktop.png"><img width="1280" height="754" src="wayline-rider-desktop-18b368580f.png" alt="The rider experience in a wide desktop window." loading="lazy" style="width:100%;height:auto" /></a><figcaption>The rider experience in a wide desktop window.</figcaption></figure>
-</div>
-
+{{< gallery cols="2" >}}
+wayline-rider-home-dark-00e75fb6b9.png | The vector map follows the dark theme.
+wayline-rider-desktop-18b368580f.png | The rider experience in a wide desktop window.
+{{< /gallery >}}
 
 ## Readable Java, even when an agent makes the change
 
@@ -473,18 +450,16 @@ You can inspect these excerpts in the [Wayline source](https://github.com/codena
 
 Wayline includes light and dark themes, distance units and translations into English, Spanish, French, German, and Hebrew. The Hebrew layout runs right to left. Wide settings screens stay in a readable column instead of stretching every field across the monitor.
 
+{{< gallery cols="4" >}}
+wayline-settings-4470b1a3d1.png | Account, ride and appearance preferences.
+wayline-settings-dark-c9bdbc463c.png | The same settings in dark mode.
+wayline-settings-hebrew-5b0c6b6980.png | Hebrew text and right-to-left layout.
+wayline-settings-analytics-186861713a.png | Usage statistics remain a device-level choice.
+{{< /gallery >}}
 
-<div class="release-screenshots" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:16px;align-items:start;margin:24px 0">
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-settings.png"><img width="420" height="909" src="wayline-settings-4470b1a3d1.png" alt="Account, ride and appearance preferences." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Account, ride and appearance preferences.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-settings-dark.png"><img width="420" height="909" src="wayline-settings-dark-c9bdbc463c.png" alt="The same settings in dark mode." loading="lazy" style="width:100%;height:auto" /></a><figcaption>The same settings in dark mode.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-settings-hebrew.png"><img width="420" height="909" src="wayline-settings-hebrew-5b0c6b6980.png" alt="Hebrew text and right-to-left layout." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Hebrew text and right-to-left layout.</figcaption></figure>
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-settings-analytics.png"><img width="420" height="909" src="wayline-settings-analytics-186861713a.png" alt="Usage statistics remain a device-level choice." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Usage statistics remain a device-level choice.</figcaption></figure>
-</div>
-
-<div class="release-screenshots" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;align-items:start;margin:24px 0">
-<figure style="margin:0"><a href="https://www.codenameone.com/developer-guide/img/wayline-settings-desktop.png"><img width="1280" height="754" src="wayline-settings-desktop-afd8dafadf.png" alt="Settings adapt to a desktop window." loading="lazy" style="width:100%;height:auto" /></a><figcaption>Settings adapt to a desktop window.</figcaption></figure>
-</div>
-
+{{< gallery cols="1" >}}
+wayline-settings-desktop-afd8dafadf.png | Settings adapt to a desktop window.
+{{< /gallery >}}
 
 Some settings are hooks for your product policy. The promotions switch is stored, but Wayline sends no promotions. The emergency contact and automatic trip-sharing preference are stored without sending messages; the ride's Share action is separate. The guide calls these out so you can decide what they should mean for your service.
 
