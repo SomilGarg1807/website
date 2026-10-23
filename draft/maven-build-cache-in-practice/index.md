@@ -10,6 +10,7 @@ categories:
   - "Maven"
   - "Use Cases"
 related_posts: []
+canonical: "https://maarten.mulders.it/2026/09/the-maven-build-cache-in-practice/"
 ---
 
 The Maven Build Cache can significantly reduce build times, but enabling it is only the beginning. In this
