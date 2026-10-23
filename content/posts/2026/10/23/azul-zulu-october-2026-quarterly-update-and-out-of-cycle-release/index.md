@@ -168,3 +168,4 @@ More info about the eMudhra CA compromise:
  by Dennis Jackson
 * [eMudhra and Java: Check and Fix cacerts and Custom Trust Stores](https://safeguard.sh/resources/blog/emudhra-java-cacerts-check-and-fix) by Safeguard.sh
 * [The eMudhra CA Compromise: Why Your JVM Is Vulnerable (and How to Fix It Properly)](https://glaforge.dev/posts/2026/10/21/the-emudhra-ca-compromise-why-your-jvm-is-vulnerable-and-how-to-fix-it/) by Guillaume Laforge
+* [Free Java, Real Risk: Why Unsupported OpenJDK Is Now a Security Gamble](https://www.azul.com/blog/free-java-real-risk-why-unsupported-openjdk-is-now-a-security-gamble/) by Simon Ritter
