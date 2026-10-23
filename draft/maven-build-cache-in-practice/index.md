@@ -209,13 +209,12 @@ Before introducing the build cache, our pipeline used the Sonar integration on t
 That meant the build, tests, packaging, and Sonar analysis were all part of one Maven invocation.
 After enabling caching, that setup became problematic.
 
-It took us a while to understand what was happening.
-The root cause is that the `sonar:sonar` goal is not a normal lifecycle phase like `compile`, `test`, `package`, or `install`.
-It is a standalone Maven goal.
-We observed that the Maven Build Cache Extension tries to cache the Sonar goal just like the normal lifecycle goals.
-But when restoring the cache, the extension did not know how to handle the Sonar goal, resulting in errors.
+Unlike `compile`, `test`, `package`, or `install`, `sonar:sonar` is a stand-alone Maven goal, not a lifecycle phase.
+The initial build completes successfully and creates a cache entry.
+On a subsequent build however, combining lifecycle goals with the stand-alone Sonar analysis goal (as the `Maven@4` task does) failed.
+We saw that the Build Cache Extension attempts to restore `sonar:sonar` as if it were a lifecycle phase.
 
-The solution was to separate Sonar analysis into its own Maven task:
+The solution was to separate Sonar analysis into its own `Maven@4` invocation:
 
 ```yaml
 - task: Maven@4
