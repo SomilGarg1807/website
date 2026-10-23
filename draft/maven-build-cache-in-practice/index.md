@@ -122,6 +122,11 @@ In our case, that looked like this:
       maven-build-cache | "$(Agent.OS)"
 ```
 
+This creates an immutable Azure DevOps cache, scoped to that branch.
+The first build on that branch will populate the cache, and subsequent builds cannot overwrite it.
+We usually see subsequent builds push only minor changes, so we don't expect this to be a severe problem.
+The biggest gain is in having a cache at all.
+
 The `$(MAVEN_BUILD_CACHE_FOLDER)` points to the directory used by the Maven Build Cache Extension in our build agent environment.
 In our pipeline definition, we define the variable as such: `$(Pipeline.Workspace)/.m2/build-cache`, which is where the cache is normally stored.
 
