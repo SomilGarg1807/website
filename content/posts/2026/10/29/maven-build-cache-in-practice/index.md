@@ -1,6 +1,6 @@
 ---
 title: "The Maven Build Cache in Practice"
-date: "2026-10-20"
+date: "2026-10-29"
 description: "The Maven Build Cache significantly reduces build times in enterprise projects. Learn how we introduced it in Azure DevOps pipelines, the issues we encountered, and the valuable lessons we learned along the way."
 authors:
   - "mthmulders"
@@ -9,7 +9,11 @@ image: "geocache.jpg"
 categories:
   - "Maven"
   - "Use Cases"
-related_posts: []
+related_posts:
+  - "faster-maven-builds-part-2"
+  - "introducing-jenesis"
+  - "improving-mavens-dependencyanalyze-or-not"
+  - "introduction-to-maven-toolchains"
 canonical: "https://maarten.mulders.it/2026/09/the-maven-build-cache-in-practice/"
 ---
 
