@@ -5,6 +5,8 @@ test('banner navigation reserves space instead of moving the next keyboard targe
   await page.goto('today/page/2/');
   const track = page.locator('[data-ad-track]');
   await track.scrollIntoViewIfNeeded();
+  // Off-screen slides are loading="lazy" and would never complete on their own.
+  await track.locator('img').evaluateAll(imgs => imgs.forEach(img => { img.loading = 'eager'; }));
   await expect.poll(() => track.locator('img').evaluateAll(imgs => imgs.every(img => img.complete))).toBe(true);
   const height = await track.evaluate(e => e.getBoundingClientRect().height);
   const actions = track.locator('a[href]');

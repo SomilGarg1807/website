@@ -2530,6 +2530,14 @@ a.pagination__btn:hover { border-color: var(--ink); text-decoration: none; }
   color: var(--admonition-accent, var(--brand-accent-strong));
 }
 .prose .admonitionblock td.content > :last-child { margin-bottom: 0; }
+/* The shortcodes emit divs, not asciidoctor's table (partials/admonition.html). */
+.prose .admonitionblock > .title {
+  margin-bottom: .35rem;
+  font-family: var(--font-display); font-size: .78rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--admonition-accent, var(--brand-accent-strong));
+}
+.prose .admonitionblock > .content > :last-child { margin-bottom: 0; }
 /* One custom property per severity rather than five near-identical rule sets.
    All five differ: WARNING and CAUTION shared --feed at first, on the reasoning
    that the palette had no severity colours and inventing one would be an accent

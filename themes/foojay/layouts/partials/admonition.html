@@ -1,0 +1,7 @@
+{{- /* Shared body of the five admonition shortcodes. Emits the class names
+       asciidoctor uses, so one block of CSS styles both formats. Takes
+       (dict "type" "note" "page" .Page "inner" .Inner). */ -}}
+<div class="admonitionblock {{ .type }}" role="note" aria-label="{{ .type | title }}">
+  <div class="title">{{ .type | title }}</div>
+  <div class="content">{{ .inner | .page.RenderString (dict "display" "block") }}</div>
+</div>

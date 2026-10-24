@@ -131,6 +131,33 @@ nobody can tell apart — and it reads better for anyone skimming, too.
 1. A numbered item
 2. Another one
 
+### Notes and warnings
+
+Five callout boxes, the same ones an AsciiDoc article has. The text inside is
+normal Markdown, and every tag must be closed:
+
+{{< note >}}
+Virtual threads are not faster threads. They are cheaper threads.
+{{< /note >}}
+
+{{< tip >}}
+`jcmd <pid> Thread.dump_to_file` gives you every virtual thread.
+{{< /tip >}}
+
+{{< important >}}
+Something they should not skip.
+{{< /important >}}
+
+{{< warning >}}
+A `synchronized` block still pins the carrier thread before JDK 24.
+{{< /warning >}}
+
+{{< caution >}}
+Something that could lose data.
+{{< /caution >}}
+
+Use them sparingly: a page where everything is highlighted has nothing highlighted.
+
 ### Quote and horizontal rule
 
 > A blockquote for pull-quotes or citations.

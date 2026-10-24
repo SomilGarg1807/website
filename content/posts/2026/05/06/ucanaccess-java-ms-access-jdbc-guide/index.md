@@ -26,6 +26,10 @@ Microsoft Access databases are everywhere. Decades of `.mdb` and `.accdb` files 
 
 UCanAccess puts an end to that. It is an open-source, pure-Java JDBC driver that lets you read and write Microsoft Access databases (`.mdb` and `.accdb`) just like any other SQL database. No native drivers, no Windows dependency, no friction.
 
+{{< note >}}
+*This article was updated on 24 October 2026: the dependency versions are now 5.2.0, and the tool compatibility, requirements and quality sections were revised.*
+{{< /note >}}
+
 ## A Brief History
 
 UCanAccess has been around for more than a decade and quickly became the go-to solution for Java-to-Access connectivity. The project was invaluable, but development went quiet around 2020. Development has continued on GitHub since 2022 under its current maintainer, who had already contributed to the original project.
@@ -148,5 +152,3 @@ UCanAccess lives at [github.com/spannm/ucanaccess](https://github.com/spannm/uca
 If UCanAccess has helped you keep a legacy system running or simplified a migration, consider dropping a star on GitHub. It helps the project stay visible and signals to the community that this bridge is alive and well-maintained.
 
 *UCanAccess is licensed under the Apache License 2.0 and available on [Maven Central](https://central.sonatype.com/artifact/io.github.spannm/ucanaccess).*
-
-*Updated October 2026 for UCanAccess 5.2.0.*
