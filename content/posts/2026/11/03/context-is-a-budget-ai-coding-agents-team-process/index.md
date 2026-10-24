@@ -1,6 +1,6 @@
 ---
 title: "Context Is a Budget: What Changed in Our Team's Process When We Started Using AI Coding Agents"
-date: "2026-01-01"
+date: "2026-11-03"
 description: "A practical, tool-agnostic workflow for specs, tests, review loops, worktrees, and team-owned configuration when coding agents join development."
 authors:
   - "viktoria-evdokimova"
@@ -10,7 +10,11 @@ categories:
   - "Developer Tools"
   - "Java"
   - "Testing"
-related_posts: []
+related_posts:
+  - "green-build-wrong-task-a-working-agreement-for-java-teams-using-ai-coding-agents"
+  - "from-spec-driven-development-to-living-specifications-in-java-projects"
+  - "how-to-create-test-install-agent-skills"
+  - "did-your-ai-agent-run-the-debugger-one-jvm-bug-two-agent-runs"
 ---
 
 **Key takeaways**
