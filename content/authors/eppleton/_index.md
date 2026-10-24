@@ -6,7 +6,7 @@ bio: "Anton Epple is a Java Champion and an Apache NetBeans committer. He runs D
 bluesky: ""
 mastodon: ""
 linkedin: "https://www.linkedin.com/in/antonepple/"
-github: ""
+github: "https://github.com/eppleton"
 youtube: ""
 twitter: "https://x.com/monacotoni"
 website: "https://dukehoff.com"
