@@ -1,7 +1,7 @@
 ---
 title: "UCanAccess: The Modern Pure-Java Bridge to Microsoft Access"
 date: "2026-05-06T08:44:00+00:00"
-lastmod: "2026-05-25T08:41:07+00:00"
+lastmod: "2026-10-23T20:00:00+00:00"
 description: "Learn how to connect Java applications to Microsoft Access (.accdb/.mdb) using UCanAccess. A pure-Java, open-source JDBC driver for cross-platform database access."
 authors:
   - "markus-spann"
@@ -20,23 +20,23 @@ related_posts:
   - "boxlang-1-14-0-query-transformers-take-full-control-of-your-query-results"
 ---
 
-Microsoft Access databases are everywhere. Decades of `.mdb` and `.accdb` files silently power spreadsheets, small business applications, and legacy data stores across organizations of all sizes. Yet for Java developers, connecting to these files has historically meant wrestling with native Windows libraries, ODBC bridges, and platform-specific hacks.  
+Microsoft Access databases are everywhere. Decades of `.mdb` and `.accdb` files silently power spreadsheets, small business applications, and legacy data stores across organizations of all sizes. Yet for Java developers, connecting to these files has historically meant wrestling with native Windows libraries, ODBC bridges, and platform-specific hacks.
 
 {{< img src="ucanaccess-logo.svg" class="aligncenter size-full is-resized" alt="UCanAccess Logo" style="width:320px" >}}
 
-**UCanAccess** puts an end to that. It is an open-source, pure-Java JDBC driver that lets you read and write Microsoft Access databases (`.mdb` and `.accdb`) just like any other SQL database — no native drivers, no Windows dependency, no friction.
+UCanAccess puts an end to that. It is an open-source, pure-Java JDBC driver that lets you read and write Microsoft Access databases (`.mdb` and `.accdb`) just like any other SQL database. No native drivers, no Windows dependency, no friction.
 
 ## A Brief History
 
-UCanAccess was originally created by Marco Amadei and Gord Thompson and quickly became the go-to solution for Java-to-Access connectivity. The project was invaluable, but development went quiet around 2020. After a period of community reliance on an unmaintained codebase, the project was forked and revived in 2022 by its current maintainer, ensuring the lights stay on and the code stays clean.
+UCanAccess has been around for more than a decade and quickly became the go-to solution for Java-to-Access connectivity. The project was invaluable, but development went quiet around 2020. Development has continued on GitHub since 2022 under its current maintainer, who had already contributed to the original project.
 
-The current fork is not just a maintenance release. It is an active effort to modernize the codebase: adopting JUnit 5, enforcing strict clean code standards with Checkstyle and PMD, keeping dependencies minimal and CVE-free, and continuously improving test coverage.
+This is not just a maintenance effort. The codebase is being modernized step by step: JUnit 5 tests, Checkstyle and PMD on every build, minimal dependencies with no known CVEs, and steadily improving test coverage.
 
 ## What Problems Does It Solve?
 
 ### The Disappeared Bridge
 
-Java dropped the `sun.jdbc.odbc.JdbcOdbcBridge` in Java 8 — the legacy workaround for reaching Access databases via ODBC. Many projects were left stranded. UCanAccess serves as its pure-Java replacement, filling that gap permanently.
+Java dropped the `sun.jdbc.odbc.JdbcOdbcBridge` in Java 8, the legacy workaround for reaching Access databases via ODBC. Many projects were left stranded. UCanAccess serves as its pure-Java replacement, filling that gap permanently.
 
 ### Cross-Platform Compatibility
 
@@ -44,42 +44,45 @@ Because UCanAccess is 100% Java with zero native code, it runs on Linux, macOS, 
 
 ### Seamless Integration for Tooling
 
-UCanAccess is not just for bespoke Java applications. Software environments that speak JDBC — such as **LibreOffice Base** , **OpenOffice** , **DbVisualizer** , **SQuirreL SQL** , **DBeaver** , and **MATLAB** — can connect to Access files through UCanAccess without any extra configuration.
+UCanAccess is not just for bespoke Java applications. Some tools already ship with it: DBeaver downloads UCanAccess automatically as its default MS Access driver, and recent SQuirreL SQL versions come with a predefined UCanAccess driver entry. Other tools that speak JDBC, such as LibreOffice Base, OpenOffice, NetBeans and DbVisualizer, can connect to Access files through UCanAccess as well. The [project documentation](https://spannm.github.io/ucanaccess/30-jdbc-client-tools.html) describes the setup for each of them.
 
-## Tech Stack \& Requirements
+## Tech Stack & Requirements
 
-* **Java 11 or higher** (LTS versions 17 and 21 are fully tested)
-* **Build tool**: Maven or Gradle
-* **Core dependencies** :
-  * [Jackcess](https://github.com/spannm/jackcess): handles low-level binary Access file access
-  * [HSQLDB](http://hsqldb.org/): provides the in-memory SQL engine for query translation
-* **License**: Apache License 2.0
+- Java 11 or higher. The test suite runs on Java 11, 17 and 21.
+- Maven or Gradle to pull in the dependency.
+- Core dependencies:
+  - [Jackcess](https://github.com/spannm/jackcess) handles the low-level binary Access file format.
+  - [HSQLDB](https://hsqldb.org/) provides the in-memory SQL engine for query translation.
+  - [Jackcess Encrypt](https://github.com/spannm/jackcess-encrypt) is optional and only needed for encrypted databases.
+- License: Apache License 2.0
 
 ## Getting Started
 
 ### Add the Dependency
 
-**Maven (`pom.xml`):**
+Maven (`pom.xml`):
 
-```
+```xml
 <dependency>
     <groupId>io.github.spannm</groupId>
     <artifactId>ucanaccess</artifactId>
-    <version>5.1.5</version>
+    <version>5.2.0</version>
 </dependency>
 ```
 
-**Gradle (Kotlin DSL):**
+Gradle (Kotlin DSL):
 
+```kotlin
+implementation("io.github.spannm:ucanaccess:5.2.0")
 ```
-implementation("io.github.spannm:ucanaccess:5.1.5")
-```
+
+If you are moving over from the old `net.sf.ucanaccess` artifact, the switch is usually just a change of the group id. The [README](https://github.com/spannm/ucanaccess#-migrating-from-netsfucanaccess) covers the details.
 
 ### Connect and Query
 
-Connecting is as simple as using any standard JDBC driver. No class registration or native driver setup is required:
+Connecting is as simple as using any standard JDBC driver:
 
-```
+```java
 import java.sql.*;
 
 // path to that legacy file someone "forgot" to migrate in 2010
@@ -90,23 +93,22 @@ try (Connection conn = DriverManager.getConnection(url);
      ResultSet rs = stmt.executeQuery("SELECT Name, Role FROM Foojay")) {
 
     while (rs.next()) {
-        System.out.println(String.format("Friend found: %s (%s)",
-                           rs.getString("Name"), rs.getString("Role")));
+        System.out.printf("Friend found: %s (%s)%n",
+                          rs.getString("Name"), rs.getString("Role"));
     }
 } catch (SQLException ex) {
-    System.err.println("Database access failed: " + ex);
+    System.err.printf("Database access failed: %s%n", ex);
 }
 ```
 
-No class registration, no native driver setup.  
-
+No class registration, no native driver setup.
 Standard `DriverManager.getConnection()` is all you'll need.
 
 ### Write Data Back
 
-UCanAccess supports full **DML** (Data Manipulation Language) — both reads and writes. Even some **DDL** operations like `ALTER TABLE` are supported:
+UCanAccess supports full DML (Data Manipulation Language), both reads and writes. Even DDL operations like `CREATE TABLE` and `ALTER TABLE` are supported:
 
-```
+```java
 String insert = "INSERT INTO passwd (Id, UserName, Password) VALUES (?, ?, ?)";
 
 try (Connection conn = DriverManager.getConnection(url);
@@ -119,33 +121,32 @@ try (Connection conn = DriverManager.getConnection(url);
 
     int rowsAffected = ps.executeUpdate();
 
-    System.out.println(String.format("Successfully updated %d row", rowsAffected));
+    System.out.printf("Inserted %d row(s)%n", rowsAffected);
 } catch (SQLException ex) {
-    System.err.println("Failed to update credentials: " + ex);
+    System.err.printf("Failed to update credentials: %s%n", ex);
 }
 ```
 
 ### Access-Specific Functions
 
-One common pain point when working with Access queries is the use of Access-specific SQL functions that standard JDBC drivers simply do not understand. UCanAccess ships with built-in emulations of the most common ones — `IIf()`, `Nz()`, `Format()`, and financial functions like `PMT()` and `PV()`. Queries originally written for Access often run without any modification at all.
+One common pain point when working with Access queries is the use of Access-specific SQL functions that standard JDBC drivers simply do not understand. UCanAccess ships with built-in emulations of the most common ones: `IIf()`, `Nz()`, `Format()`, date functions like `DateDiff()`, and financial functions like `PMT()` and `PV()`. Queries originally written for Access often run without any modification at all.
 
 ### Uber JAR for Non-Maven Projects
 
-If you are integrating UCanAccess into a tool that does not use Maven — such as LibreOffice Base or SQuirreL SQL — the project ships a so-called **Uber JAR** : a single self-contained archive with all dependencies bundled in. You can download it directly from [Maven Central](https://central.sonatype.com/artifact/io.github.spannm/ucanaccess) and drop it onto the classpath without any further setup.
+If you are integrating UCanAccess into a tool that does not use Maven, such as LibreOffice Base or SQuirreL SQL, the project ships an uber JAR: a single self-contained archive with all dependencies bundled in. You can download it directly from [Maven Central](https://central.sonatype.com/artifact/io.github.spannm/ucanaccess) (the file with the `uber` classifier) and drop it onto the classpath without any further setup.
 
-## Quality \& Maintenance
+## Quality & Maintenance
 
-The active fork maintains a high bar for code quality:
+Every build runs Checkstyle and PMD, and the JUnit 5 suite is executed on Linux and Windows against Java 11, 17 and 21 via GitHub Actions. CodeQL and SonarCloud analyses run alongside. Dependencies are updated regularly to keep the library free of known CVEs, and security reports are handled through GitHub security advisories. Every release is published to Maven Central.
 
-* **Static analysis**: Checkstyle and PMD are enforced on every build.
-* **Testing**: A robust JUnit 5 suite runs on both Linux and Windows via GitHub Actions CI.
-* **Security**: Regular dependency updates keep the library free of known CVEs.
-* **Distribution**: Every release is published to Maven Central for straightforward integration.
+The project is also still fixing long-standing behavior. Recent releases, for example, made the date functions respect daylight saving time changes and corrected `DateDiff` results for months and quarters.
 
 ## Get Involved
 
 UCanAccess lives at [github.com/spannm/ucanaccess](https://github.com/spannm/ucanaccess). Whether you have a bug to report, a feature idea, or want to contribute a test case, contributions are warmly welcomed.
 
-If UCanAccess has helped you keep a legacy system running or simplified a migration, consider dropping a ⭐ on GitHub — it helps the project stay visible and signals to the community that this bridge is alive and well-maintained.
+If UCanAccess has helped you keep a legacy system running or simplified a migration, consider dropping a star on GitHub. It helps the project stay visible and signals to the community that this bridge is alive and well-maintained.
 
 *UCanAccess is licensed under the Apache License 2.0 and available on [Maven Central](https://central.sonatype.com/artifact/io.github.spannm/ucanaccess).*
+
+*Updated October 2026 for UCanAccess 5.2.0.*
