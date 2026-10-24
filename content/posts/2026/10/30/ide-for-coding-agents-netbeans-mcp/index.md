@@ -1,6 +1,6 @@
 ---
 title: "An IDE for Coding Agents: NetBeans Refactorings over MCP"
-date: "2026-01-01"
+date: "2026-10-30"
 description: "Coding agents rename methods with grep and edit loops. A headless Apache NetBeans gives them real refactorings over MCP, with fewer turns and tokens."
 authors:
   - "eppleton"
@@ -9,6 +9,11 @@ categories:
   - "NetBeans"
   - "AI"
   - "Developer Tools"
+related_posts:
+  - "lathe-a-java-language-server-from-your-maven-build"
+  - "green-build-wrong-task-a-working-agreement-for-java-teams-using-ai-coding-agents"
+  - "netbeans-datawrangler-query-convert-and-edit-data-analytics-files"
+  - "observing-apache-netbeans-with-opentelemetry-and-dash0"
 canonical: "https://dukehoff.com/en/blog/dukehoff-mcp-for-java/"
 ---
 
