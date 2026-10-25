@@ -1,7 +1,7 @@
 ---
 title: "No Quote, No Claim: Making an LLM Show Its Sources in Java"
 date: "2026-01-01"
-description: "My job portal asks Gemini why a job fits a candidate. Every claim has to quote the profile and the job, and a few lines of plain Java throw away anything whose quotes can't be found."
+description: "My job portal asks Gemini why a job fits a candidate. Every claim must quote its source, and a few lines of plain Java drop any quote that can't be found."
 authors:
   - "somil-garg"
 image: "cover.jpg"
@@ -22,7 +22,7 @@ That's exactly the kind of mistake an LLM makes: something that *sounds* like th
 
 ## Why this feature needs a check at all
 
-In my [last article](https://foojay.io/today/embedding-strategies-job-search/) I measured how semantic search finds jobs in my Spring Boot job portal. Search answers "which jobs?". The next question a job seeker asks is "why this one?", and a similarity score doesn't answer that. An LLM can.
+In my [article on embedding strategies](https://foojay.io/today/embedding-strategies-job-search/) I measured how semantic search finds jobs in my Spring Boot job portal. Search answers "which jobs?". The next question a job seeker asks is "why this one?", and a similarity score doesn't answer that. An LLM can.
 
 The trouble is that an LLM will write a friendly explanation whether it's true or not. If the app tells someone "you have the Kubernetes experience this role needs" and their profile never mentions Kubernetes, they might apply with false confidence, or rewrite their CV around a skill they don't have. For this feature, a wrong answer is worse than no answer.
 
