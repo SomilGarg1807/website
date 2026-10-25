@@ -108,9 +108,9 @@ for (Claim claim : Objects.requireNonNullElse(draft.gaps(), List.<Claim>of())) {
 }
 ```
 
-A **match** needs both quotes to be found. A **gap** needs a found job quote and an empty profile quote. That checks the format and the cited requirement, but it doesn't prove the profile lacks the skill. Each list shows at most five points.
+A **match** needs both quotes to be found. A **gap** needs a found job quote and an empty profile quote. That checks the format and the cited requirement, but it doesn't prove the profile lacks the skill. Each list stops at five accepted points; anything after that isn't checked or counted.
 
-Every claim that fails is counted, and the user sees the count: either "Every point below quotes your profile or this job" or "2 point(s) were removed because they failed the checks." If the model made things up, the user should know some of its output was thrown away.
+Every checked claim that fails is counted, and the user sees the count: either "Every point below quotes your profile or this job" or "2 point(s) were removed because they failed the checks." If the model made things up, the user should know some of its output was thrown away.
 
 If nothing survives at all, the user gets an error instead of an empty box. An empty "matches" list would look like "you match nothing", and that's a claim too.
 
